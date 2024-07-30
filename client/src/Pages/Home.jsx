@@ -43,6 +43,7 @@ const Home = () => {
             <RenderCards 
             data = "allPosts"
             title = "No Posts Found"
+            />
           )}
         </div>
       </>
