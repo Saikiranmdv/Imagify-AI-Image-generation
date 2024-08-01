@@ -1,14 +1,19 @@
 import React, {useState,useEffect} from 'react'
-import { Loader,Card,FormField } from '../components'
+import { Loader, Card , FormField } from '../components'
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
   const [posts, setAllPosts] = useState(null)
   const [searchText, setsearchText] = useState('')
-  const RenderCards = ({data,title}) => {
-    if (data ?.length > 0) {
+  
+  const RenderCards = ({ data , title }) => {
+    if (data?.length > 0) {
       return data.map((post) => <Card key={post._id} {...post} />)
     }
+
+      return( 
+      <h2 className='mt-5 font-bold text-[#6449ff] text-xl-uppercase'>{title}</h2>
+    );
   }
   return (
     <section className='max-w-7xl mx-auto'>
@@ -36,13 +41,13 @@ const Home = () => {
         <div className='grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3'> 
           {searchText ? (
             <RenderCards 
-            data = "searchedResults"
-            title = "No Search results found"
+              data = {[]}
+              title = "No Search results found"
             />
           ): ( 
             <RenderCards 
-            data = "allPosts"
-            title = "No Posts Found"
+              data = {[]}
+              title = "No Posts Found"
             />
           )}
         </div>
